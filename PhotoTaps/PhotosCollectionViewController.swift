@@ -39,5 +39,24 @@ class PhotosCollectionViewController: UICollectionViewController {
 }
 
 extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
+//    Размер ячейки
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemsPerRows: CGFloat = 2 // объекты на ряд
+        let paddingWith = 20 * (itemsPerRows + 1) // Сколько отступов на ряду будет
+        let availableWidth = collectionView.frame.width - paddingWith // Какая ширина доступна для ячеек
+        let widthPerItem = availableWidth / itemsPerRows // точно доступна ширина для 1 объекта
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+//    Создание отступов (границы) ячеек
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+//    Растояние по линиям
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
 }
